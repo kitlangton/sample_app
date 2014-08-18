@@ -12,7 +12,11 @@ AddRememberTokenToUsers	db/migrate/20140813183842_add_remember_token_to_users.rb
 Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:SampleApp
 ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
 ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CreateMicroposts	db/migrate/20140815150227_create_microposts.rb	/^class CreateMicroposts < ActiveRecord::Migration$/;"	c
 CreateUsers	db/migrate/20140811153949_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
+Micropost	app/models/micropost.rb	/^class Micropost < ActiveRecord::Base$/;"	c
+MicropostsController	app/controllers/microposts_controller.rb	/^class MicropostsController < ApplicationController$/;"	c
+Ruby on Rails Tutorial: sample application	README.md	/^# Ruby on Rails Tutorial: sample application$/;"	h
 SampleApp	config/application.rb	/^module SampleApp$/;"	m
 SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
 SessionsHelper	app/helpers/sessions_helper.rb	/^module SessionsHelper$/;"	m
@@ -29,23 +33,31 @@ change	db/migrate/20140811184049_add_index_to_users_email.rb	/^  def change$/;"	
 change	db/migrate/20140811185943_add_password_digest_to_users.rb	/^  def change$/;"	f	class:AddPasswordDigestToUsers
 change	db/migrate/20140813183842_add_remember_token_to_users.rb	/^  def change$/;"	f	class:AddRememberTokenToUsers
 change	db/migrate/20140814201221_add_admin_to_users.rb	/^  def change$/;"	f	class:AddAdminToUsers
+change	db/migrate/20140815150227_create_microposts.rb	/^  def change$/;"	f	class:CreateMicroposts
 contact	app/controllers/static_pages_controller.rb	/^  def contact$/;"	f	class:StaticPagesController
+correct_user	app/controllers/microposts_controller.rb	/^    def correct_user$/;"	f	class:MicropostsController
 correct_user	app/controllers/users_controller.rb	/^  def correct_user$/;"	f	class:UsersController
+create	app/controllers/microposts_controller.rb	/^  def create$/;"	f	class:MicropostsController
 create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
 create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
 create_remember_token	app/models/user.rb	/^    def create_remember_token$/;"	f	class:User
 current_user	app/helpers/sessions_helper.rb	/^  def current_user$/;"	f	class:SessionsHelper
 current_user=	app/helpers/sessions_helper.rb	/^  def current_user=(user)$/;"	f	class:SessionsHelper
 current_user?	app/helpers/sessions_helper.rb	/^  def current_user?(user)$/;"	f	class:SessionsHelper
+destroy	app/controllers/microposts_controller.rb	/^  def destroy$/;"	f	class:MicropostsController
 destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
 destroy	app/controllers/users_controller.rb	/^  def destroy$/;"	f	class:UsersController
 digest	app/models/user.rb	/^  def User.digest(token)$/;"	F	class:User
 edit	app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
+feed	app/models/user.rb	/^  def feed$/;"	f	class:User
 full_title	app/helpers/application_helper.rb	/^  def full_title(page_title)$/;"	f	class:ApplicationHelper
 gravatar_for	app/helpers/users_helper.rb	/^  def gravatar_for(user, options = { size: 50 })$/;"	f	class:UsersHelper
 help	app/controllers/static_pages_controller.rb	/^  def help$/;"	f	class:StaticPagesController
 home	app/controllers/static_pages_controller.rb	/^  def home$/;"	f	class:StaticPagesController
+index	app/controllers/microposts_controller.rb	/^  def index$/;"	f	class:MicropostsController
 index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
+micropost_params	app/controllers/microposts_controller.rb	/^    def micropost_params$/;"	f	class:MicropostsController
+microposts	app/models/user.rb	/^  has_many :microposts, dependent: :destroy$/;"	f
 new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
 new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
 new_remember_token	app/models/user.rb	/^  def User.new_remember_token$/;"	F	class:User
@@ -56,7 +68,8 @@ sign_in	app/helpers/sessions_helper.rb	/^  def sign_in(user)$/;"	f	class:Session
 sign_in	spec/support/utilities.rb	/^def sign_in(user, options={})$/;"	f
 sign_out	app/helpers/sessions_helper.rb	/^  def sign_out$/;"	f	class:SessionsHelper
 signed_in?	app/helpers/sessions_helper.rb	/^  def signed_in?$/;"	f	class:SessionsHelper
-signed_in_user	app/controllers/users_controller.rb	/^  def signed_in_user$/;"	f	class:UsersController
+signed_in_user	app/helpers/sessions_helper.rb	/^  def signed_in_user$/;"	f	class:SessionsHelper
 store_location	app/helpers/sessions_helper.rb	/^  def store_location$/;"	f	class:SessionsHelper
 update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
+user	app/models/micropost.rb	/^  belongs_to :user$/;"	f
 user_params	app/controllers/users_controller.rb	/^  def user_params$/;"	f	class:UsersController
