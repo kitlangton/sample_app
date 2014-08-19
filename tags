@@ -13,9 +13,12 @@ Application	config/application.rb	/^  class Application < Rails::Application$/;"
 ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
 ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
 CreateMicroposts	db/migrate/20140815150227_create_microposts.rb	/^class CreateMicroposts < ActiveRecord::Migration$/;"	c
+CreateRelationships	db/migrate/20140818201803_create_relationships.rb	/^class CreateRelationships < ActiveRecord::Migration$/;"	c
 CreateUsers	db/migrate/20140811153949_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
 Micropost	app/models/micropost.rb	/^class Micropost < ActiveRecord::Base$/;"	c
 MicropostsController	app/controllers/microposts_controller.rb	/^class MicropostsController < ApplicationController$/;"	c
+Relationship	app/models/relationship.rb	/^class Relationship < ActiveRecord::Base$/;"	c
+RelationshipsController	app/controllers/relationships_controller.rb	/^class RelationshipsController < ApplicationController$/;"	c
 Ruby on Rails Tutorial: sample application	README.md	/^# Ruby on Rails Tutorial: sample application$/;"	h
 SampleApp	config/application.rb	/^module SampleApp$/;"	m
 SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
@@ -34,10 +37,12 @@ change	db/migrate/20140811185943_add_password_digest_to_users.rb	/^  def change$
 change	db/migrate/20140813183842_add_remember_token_to_users.rb	/^  def change$/;"	f	class:AddRememberTokenToUsers
 change	db/migrate/20140814201221_add_admin_to_users.rb	/^  def change$/;"	f	class:AddAdminToUsers
 change	db/migrate/20140815150227_create_microposts.rb	/^  def change$/;"	f	class:CreateMicroposts
+change	db/migrate/20140818201803_create_relationships.rb	/^  def change$/;"	f	class:CreateRelationships
 contact	app/controllers/static_pages_controller.rb	/^  def contact$/;"	f	class:StaticPagesController
 correct_user	app/controllers/microposts_controller.rb	/^    def correct_user$/;"	f	class:MicropostsController
 correct_user	app/controllers/users_controller.rb	/^  def correct_user$/;"	f	class:UsersController
 create	app/controllers/microposts_controller.rb	/^  def create$/;"	f	class:MicropostsController
+create	app/controllers/relationships_controller.rb	/^  def create$/;"	f	class:RelationshipsController
 create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
 create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
 create_remember_token	app/models/user.rb	/^    def create_remember_token$/;"	f	class:User
@@ -45,11 +50,21 @@ current_user	app/helpers/sessions_helper.rb	/^  def current_user$/;"	f	class:Ses
 current_user=	app/helpers/sessions_helper.rb	/^  def current_user=(user)$/;"	f	class:SessionsHelper
 current_user?	app/helpers/sessions_helper.rb	/^  def current_user?(user)$/;"	f	class:SessionsHelper
 destroy	app/controllers/microposts_controller.rb	/^  def destroy$/;"	f	class:MicropostsController
+destroy	app/controllers/relationships_controller.rb	/^  def destroy$/;"	f	class:RelationshipsController
 destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
 destroy	app/controllers/users_controller.rb	/^  def destroy$/;"	f	class:UsersController
 digest	app/models/user.rb	/^  def User.digest(token)$/;"	F	class:User
 edit	app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
 feed	app/models/user.rb	/^  def feed$/;"	f	class:User
+follow!	app/models/user.rb	/^  def follow!(other_user)$/;"	f	class:User
+followed	app/models/relationship.rb	/^  belongs_to :followed, class_name: "User"$/;"	f
+followed_users	app/models/user.rb	/^  has_many :followed_users, through: :relationships, source: :followed$/;"	f
+follower	app/models/relationship.rb	/^  belongs_to :follower, class_name: "User"$/;"	f
+followers	app/controllers/users_controller.rb	/^  def followers$/;"	f	class:UsersController
+followers	app/models/user.rb	/^  has_many :followers, through: :reverse_relationships, source: :follower$/;"	f
+following	app/controllers/users_controller.rb	/^  def following$/;"	f	class:UsersController
+following?	app/models/user.rb	/^  def following?(other_user)$/;"	f	class:User
+from_users_followed_by	app/models/micropost.rb	/^  def self.from_users_followed_by(user)$/;"	F	class:Micropost
 full_title	app/helpers/application_helper.rb	/^  def full_title(page_title)$/;"	f	class:ApplicationHelper
 gravatar_for	app/helpers/users_helper.rb	/^  def gravatar_for(user, options = { size: 50 })$/;"	f	class:UsersHelper
 help	app/controllers/static_pages_controller.rb	/^  def help$/;"	f	class:StaticPagesController
@@ -62,6 +77,8 @@ new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsContr
 new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
 new_remember_token	app/models/user.rb	/^  def User.new_remember_token$/;"	F	class:User
 redirect_back_or	app/helpers/sessions_helper.rb	/^  def redirect_back_or(default)$/;"	f	class:SessionsHelper
+relationships	app/models/user.rb	/^  has_many :relationships, foreign_key: "follower_id", dependent: :destroy$/;"	f
+reverse_relationships	app/models/user.rb	/^  has_many :reverse_relationships, foreign_key: "followed_id",$/;"	f
 secure_token	config/initializers/secret_token.rb	/^def secure_token$/;"	f
 show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
 sign_in	app/helpers/sessions_helper.rb	/^  def sign_in(user)$/;"	f	class:SessionsHelper
@@ -70,6 +87,7 @@ sign_out	app/helpers/sessions_helper.rb	/^  def sign_out$/;"	f	class:SessionsHel
 signed_in?	app/helpers/sessions_helper.rb	/^  def signed_in?$/;"	f	class:SessionsHelper
 signed_in_user	app/helpers/sessions_helper.rb	/^  def signed_in_user$/;"	f	class:SessionsHelper
 store_location	app/helpers/sessions_helper.rb	/^  def store_location$/;"	f	class:SessionsHelper
+unfollow!	app/models/user.rb	/^  def unfollow!(other_user)$/;"	f	class:User
 update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
 user	app/models/micropost.rb	/^  belongs_to :user$/;"	f
 user_params	app/controllers/users_controller.rb	/^  def user_params$/;"	f	class:UsersController
